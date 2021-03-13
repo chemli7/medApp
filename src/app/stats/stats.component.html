@@ -1,0 +1,310 @@
+
+<ion-content
+
+[scrollEvents]="true"
+(ionScrollStart)="logScrollStart()"
+(ionScroll)="logScrolling($event)"
+(ionScrollEnd)="logScrollEnd()">
+
+
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <div class="page-header text-center mb-1 mt-1">
+        <h2 style="color: seashell;">Statistiques générales</h2>
+      </div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<div class="text-center mt-5">
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <div class="d-flex justify-content mt-2  ml-1">
+          <h4> QCM:</h4>
+        </div>
+        <div class="d-flex justify-content-center ml-1 mb-2">
+          
+          <div class="progress">
+            <div class="progress-bar bg-success " role="progressbar"
+            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+              520/1550
+            </div>
+          </div>
+        </div>
+        
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+</div>
+
+
+
+<div class="text-center">
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <div class="d-flex justify-content mt-2  ml-1">
+          <h4> Series:</h4>
+        </div>
+        <div class="d-flex justify-content-center ml-1 mb-2">
+          
+          <div class="progress">
+            <div class="progress-bar bg-success " role="progressbar"
+            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+              520/1550
+            </div>
+          </div>
+        </div>
+        
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+</div>
+
+
+
+
+
+<div class="text-center">
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <div class=" d-flex justify-content mt-1 mb-2 ml-1">
+          
+          <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="" (click)="showCharts()" >
+              <h4 style="color: #5d6363;">Temps moyen de réponse/QCM </h4>
+            </a>
+          </div>
+          
+        </div>
+        
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+
+  
+  <!-- Line charts: Evolution du taux ...  -->
+  <div id="curve_chart" style="width: 98%;" class="ml-1 mr-1"></div>
+
+</div>
+
+
+<div class="text-center">
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <div class="d-flex justify-content mt-2  ml-1">
+          <h4> QCM correctes/QCM faites:</h4>
+        </div>
+        <div class="d-flex justify-content-center ml-1 mb-2">
+          
+          <div class="progress">
+            <div class="progress-bar bg-success " role="progressbar"
+            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+              520/1550
+            </div>
+          </div>
+        </div>
+        
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+</div>
+
+
+
+
+
+
+<div class="text-center">
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <div class=" d-flex justify-content mt-1 mb-2 ml-1">
+          
+          <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="" (click)="showCharts2()" >
+              <h4 style="color: #5d6363;">Evolution de taux de réponse(Précision) </h4>
+            </a>
+          </div>
+          
+        </div>
+        
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+
+  
+  <!-- Line charts: Evolution du taux ...  -->
+  <div id="chart_divEVOLUTION" style="width: 98%;" class="ml-1 mr-1"></div>
+
+</div>
+
+<div class="text-center mt-1 ">
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <h3 orange>Meilleur Certif</h3>
+        <p>Cardio</p>
+      </ion-card>
+    </ion-col>
+
+    <ion-col>
+      <ion-card>
+        <h3 orange>Meilleur objectif</h3>
+        <p>mm mm</p>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</div>
+
+
+
+<div class="card mt-2 mb-0" style="width: 98%; margin-left: 1%; margin-right: 1;">
+  <div id="accordion">
+
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapseFaculte">
+          <h4 style="color: #5d6363;">Nombre de QCMs faits par faculté </h4>
+      </a>
+      </div>
+      <div id="collapseFaculte" class="collapse" data-parent="#accordion">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>FMT:</b> 20/500 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>FMM:</b> 10/400 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>FMS:</b> 0/200 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>FMS:</b> 0/200 </h6></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="card mt-3 mb-0" style="width: 98%; margin-left: 1%; margin-right: 1;">
+  <div id="accordion">
+
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapseAnnee">
+          <h4 style="color: #5d6363;">Nombre de QCMs faits par année </h4>
+      </a>
+      </div>
+      <div id="collapseAnnee" class="collapse" data-parent="#accordion">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>2020:</b> 20/500 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>2019:</b> 10/400 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>2018:</b> 0/200 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>2017:</b> 0/200 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>2017:</b> 0/200 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>2016:</b> 0/200 </h6></li>
+          <li class="list-group-item"><h6 style="color: #5d6363;"><b>2015:</b> 0/200 </h6></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="text-center mt-3 mb-0" >
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <div class=" d-flex justify-content mt-1 mb-2 ml-1">
+          
+          <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="" (click)="showCharts3()" >
+              <h4 style="color: #5d6363;">Moyenne de QCM faits/Jour </h4>
+            </a>
+          </div>
+          
+        </div>
+        
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+
+  
+  <!-- Line charts: Evolution du taux ...  -->
+  <div id="chart_moyenne_qcm_jour" style="width: 98%;" class="ml-1 mr-1"></div>
+
+</div>
+
+
+
+<!-- <div class="card mt-2 mb-2" style="width: 98%; margin-left: 1%; margin-right: 1;">
+  <div id="accordion">
+
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapseGraph" (click)="showCharts3()" >
+          <h4 style="color: #5d6363;"> Moyenne de QCM faits/Jour </h4>
+        </a>
+      </div>
+      <div id="collapseGraph" class="collapse" data-parent="#accordion">
+        
+        <div id="chart_moyenne_qcm_jour" style="width: 98%;" class="ml-1 mr-1"></div>
+      </div>
+    </div>
+
+  </div>
+</div> -->
+
+
+
+<div class="card mt-2 mb-2" style="width: 98%; margin-left: 1%; margin-right: 1;">
+  <div id="accordion">
+
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapseRanking">
+          <h4 style="color: #5d6363;">Ranking </h4>
+        </a>
+      </div>
+      <div id="collapseRanking" class="collapse" data-parent="#accordion">
+        <div class="content-inner">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h6 style="color: #5d6363;"><b>Par total des points:</b> 5/100 </h6>
+              <ul class="list-group list-group-flush">
+              <li class="list-group-item"><h6 style="color: #5d6363;"><b>Par total des points:</b> 5/100 </h6></li>
+              <li class="list-group-item"><h6 style="color: #5d6363;"><b>Par jour:</b> 5/100 </h6></li>
+              <li class="list-group-item"><h6 style="color: #5d6363;"><b>Par semaine:</b> 5/100 </h6></li>
+              <li class="list-group-item"><h6 style="color: #5d6363;"><b>Par mois:</b> 5/100 </h6></li>
+              <li class="list-group-item"><h6 style="color: #5d6363;"><b>Par totalité de la période:</b> 5/100 </h6></li>
+            </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</ion-content>

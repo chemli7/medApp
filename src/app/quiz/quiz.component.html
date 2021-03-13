@@ -1,0 +1,83 @@
+<!-- 
+<h2>
+  {{ QList[pointer] }}
+</h2>
+<button (click)="go(0)" class="btn btn-primary">{{QAnswers[pointer][0]}}</button>
+<button (click)="go(1)" class="btn btn-primary">{{QAnswers[pointer][1]}}</button>
+<button (click)="go(2)" class="btn btn-primary">{{QAnswers[pointer][2]}}</button>
+<button (click)="go(3)" class="btn btn-primary">{{QAnswers[pointer][3]}}</button>
+<button (click)="go(4)" class="btn btn-primary">{{QAnswers[pointer][4]}}</button>
+ -->
+
+ 
+ <div   style=" height: 30%;" 
+ [scrollEvents]="true"
+   (ionScrollStart)="logScrollStart()"
+   (ionScroll)="logScrolling($event)"
+   (ionScrollEnd)="logScrollEnd()">
+  
+   <ion-card-header color="newblue" class="d-flex align-items-center justify-content-center" style="color: white;">
+     Cardio, Monastir, 2018
+   </ion-card-header>
+ 
+   <ion-card-content color="newblue"  class="ion-text-center"   >
+     <ion-text style="font-size: {{QsizeList[pointer]}}" >{{ QList[pointer] }}</ion-text>
+   </ion-card-content>
+ </div>
+ 
+ <ion-item color="newblue">
+   <ion-button  (click)="Back()" slot="start"><ion-icon name="chevron-back-outline"></ion-icon>back</ion-button>
+  <!-- Green Progress Bar -->
+ <div  class="progress " style="width: 100%;">
+   <div class="progress-bar bg-info progress-bar-striped" style="width:{{ successPercentage }}%"></div>
+ </div>
+   <!-- <ion-button slot="start" (click)="Report()" color="danger">report</ion-button> -->
+   <ion-button  (click)="Next()" slot="end">next<ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+ </ion-item>
+ 
+ <ion-content
+   color="secondary"
+   [scrollEvents]="true"
+   (ionScrollStart)="logScrollStart()"
+   (ionScroll)="logScrolling($event)"
+   (ionScrollEnd)="logScrollEnd()">
+ 
+ 
+ 
+   <ion-card style="border-radius: 30px;">
+   <ion-item color="{{colors[0]}}" disabled="{{disabled}}" button (click)="selectAnswer(0)" class="ion-activated">
+   <ion-icon  color="newblue" style="background-color: {{selected[0]}}" name="square-outline" slot="end"></ion-icon>
+     <p style="font-size: 90%">{{QAnswers[pointer][0]}}</p>
+   </ion-item>
+   </ion-card>
+   <ion-card style="border-radius: 30px;">
+   <ion-item color="{{colors[1]}}" disabled="{{disabled}}" button (click)="selectAnswer(1)" class="ion-activated">
+     <p style="font-size: 90%">{{QAnswers[pointer][1]}}</p>
+     <ion-icon  color="newblue" style="background-color: {{selected[1]}}"  name="square-outline" slot="end"></ion-icon>
+   </ion-item>
+ </ion-card>
+ <ion-card color="secondary" style="border-radius: 30px;">
+   <ion-item  color="{{colors[2]}}" disabled="{{disabled}}" button (click)="selectAnswer(2)" class="ion-activated">
+     <ion-icon  color="newblue" style="background-color: {{selected[2]}}"  name="square-outline" slot="end"></ion-icon>
+ 
+     <p style="font-size: 90%">{{QAnswers[pointer][2]}}</p>
+   </ion-item>
+ </ion-card >
+ <ion-card style="border-radius: 30px;" >
+   <ion-item color="{{colors[3]}}" disabled="{{disabled}}" button (click)="selectAnswer(3)" class="ion-activated">
+     <ion-icon  color="newblue" style="background-color: {{selected[3]}}"  name="square-outline" slot="end"></ion-icon>
+     <p style="font-size: 90%">{{QAnswers[pointer][3]}}</p>
+   </ion-item>
+ </ion-card >
+ <ion-card style="border-radius: 30px;">
+ <ion-item color="{{colors[4]}}" disabled="{{disabled}}" button (click)="selectAnswer(4)" class="ion-activated">
+   <ion-icon  color="newblue" style="background-color: {{selected[4]}}"  name="square-outline" slot="end"></ion-icon> 
+   <p style="font-size: 90%">{{QAnswers[pointer][4]}}</p>
+ </ion-item>
+ </ion-card>
+ 
+ 
+ <div class="d-flex align-items-center justify-content-center"  ><ion-button color="newblue" expand="" disabled="{{disabled}}" (click)="go()">Submit</ion-button></div>
+ 
+ 
+ </ion-content>

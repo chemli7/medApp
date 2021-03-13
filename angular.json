@@ -31,7 +31,19 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
+            "styles": [
+              {
+                "input": "src/theme/variables.scss"
+
+              },
+
+              {
+                "input": "src/global.scss"
+              },
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              }
+            ],
             "scripts": []
           },
           "configurations": {

@@ -3,6 +3,7 @@
 
 /** Ionic CSS Variables **/
 :root {
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -28,7 +29,7 @@
   --ion-color-tertiary-tint: #6370ff;
 
   /** success **/
-  --ion-color-success: #2dd36f;
+  --ion-color-success: #1c9a4e;
   --ion-color-success-rgb: 45, 211, 111;
   --ion-color-success-contrast: #ffffff;
   --ion-color-success-contrast-rgb: 255, 255, 255;
@@ -68,12 +69,13 @@
   --ion-color-medium-tint: #9d9fa6;
 
   /** light **/
-  --ion-color-light: #f4f5f8;
+  --ion-color-light: #becbf0;
   --ion-color-light-rgb: 244, 245, 248;
   --ion-color-light-contrast: #000000;
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -179,15 +181,11 @@
     --ion-color-step-900: #e6e6e6;
     --ion-color-step-950: #f2f2f2;
 
+    --ion-toolbar-background: #0d0d0d;
+
     --ion-item-background: #000000;
 
     --ion-card-background: #1c1c1d;
-  }
-
-  .ios ion-modal {
-    --ion-background-color: var(--ion-color-step-100);
-    --ion-toolbar-background: var(--ion-color-step-150);
-    --ion-toolbar-border-color: var(--ion-color-step-250);
   }
 
 
