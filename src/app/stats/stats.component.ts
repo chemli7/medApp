@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 declare var google;
@@ -8,9 +9,40 @@ declare var google;
 })
 export class StatsComponent implements OnInit {
 
-  constructor() { }
+  username = "username";
+  qcm_done = 0;
+  qcm_totale = 0;
+  qcm_corrects = 0;
+  qcm_done_faculte = {"FMT":0,"FMS":0,"FMM":0,"FMSo":0}
+  qcm_done_annee = {"2020":0,"2019":0,"2018":0,"2017":0,"2016":0,"2015":0}
+  // Series
+  quiz_done = 0;
+  quiz_totale = 0;
 
-  ngOnInit() {}
+
+
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.qcm_done = 0;
+    this.qcm_totale = 0;
+    this.qcm_corrects = 0;
+    this.qcm_done_faculte = {"FMT":0,"FMS":0,"FMM":0,"FMSo":0};
+    this.qcm_done_annee = {"2020":0,"2019":0,"2018":0,"2017":0,"2016":0,"2015":0}
+    this.quiz_done = 0;
+    this.quiz_totale = 0;
+    this.http.post<any[]>("http://localhost:8080/get_statistics",{"username":this.username}).subscribe(data => {
+      this.qcm_done = data["qcm_done"];
+      this.qcm_totale = data["qcm_totale"];
+      this.qcm_corrects = data["qcm_corrects"];
+      this.qcm_done_faculte = data["qcm_done_faculte"];
+      this.qcm_done_annee = data["qcm_done_annee"];
+      this.quiz_done = data["quiz_done"];
+      this.quiz_totale = data["quiz_totale"];
+    })
+
+  }
 
   showCharts() {
 

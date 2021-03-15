@@ -14,10 +14,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { Facebook } from '@ionic-native/facebook/ngx';
 
 
+// You don't need to import firebase/app either since it's being imported above
+import 'firebase/auth';
+import 'firebase/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    HttpClientModule],
   providers: [
     Facebook,
     StatusBar,

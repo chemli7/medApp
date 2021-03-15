@@ -28,7 +28,7 @@ export class QuizComponent implements OnInit {
   QDecision = [];
   QSelected = [];
 
-  Username = "USER";
+  Username: String = "USER";
   time = 10;
 
 
@@ -47,9 +47,7 @@ Next() {
   else { this.newQuestion() } }
   else{
     window.location.href = "/other/"+this.score+"/"+this.data["year"]+"/"+this.data["school"]+"/"+this.data["course"];
-    this.http.post<any[]>("http://localhost:8080/stats", {"username":this.Username, "score": this.score, "quiz":{"year":this.data["year"],"school":this.data["school"], "course": this.data["course"]}, "time": this.time }).subscribe(data => {
-      // Nothing
-    });
+    this.updateStatsData();
   } 
 }
 
@@ -198,6 +196,95 @@ calculScore(){
     this.getData();    
     this.initVariables();
     
+    
+  }
+
+  /* 
+    if a user finishes a quiz:
+    - quiz (serie) list will be extended by one ==  /{username}/quiz/quiz_list (((+ NewQuiz{year,school,course})))
+    - length(serie) + 1 ... == /{username}/quiz/number_quiz CORRECTE_done + 1 
+    - length(serie) + 1 ... == /{username}/quiz/number_quiz_done + 1 
+    - avg score changes ==  /{username}/quiz/avg_score
+    - nombre de QCM totale done + nmbre qcm fait == /{username}/quiz/nmbre_qcm_done
+    - nmbre_qcm_faculte[facult]+nmbre de qcm faits == /{username}/faculte/nmbre_qcm
+    - nmbre_qcm_annee[annee]+nmbre de qcm faits  == /{username}/annee /nmbre_qcm
+  */
+
+  updateStatsData(){
+    // QUIZ
+    var path:String = this.Username + "/quiz/quiz_list";
+    this.http.post<any[]>("http://localhost:8080/get_specific_statistics",{"path":path}).subscribe(data => {
+      var list: any[] = data["list"];
+      list.push(this.data["year"]+"|"+this.data["school"]+"|"+this.data["course"]);
+      this.http.post<any[]>("http://localhost:8080/post_specific_statistics",{"path":path, "data":list}).subscribe(data => {
+        
+      
+      // Average score ----------------------------------
+        path = this.Username + "/quiz/avg_score";
+        this.http.post<any[]>("http://localhost:8080/get_specific_statistics",{"path":path}).subscribe(data => {
+        var avg_score = data["avg_score"];
+        avg_score = (avg_score*(list.length-1) + (this.score/this.QList.length))/list.length; 
+        this.http.post<any[]>("http://localhost:8080/post_specific_statistics",{"path":path, "data":avg_score}).subscribe(data => {
+        
+          })
+        })
+      })
+      // ------------------------------------
+    })
+
+    // number_quiz_done
+    path = this.Username + "/quiz/number_quiz_done";
+    this.http.post<any[]>("http://localhost:8080/get_specific_statistics",{"path":path}).subscribe(data => {
+      var number_quiz = data["number_quiz"];
+      number_quiz ++ ;
+      this.http.post<any[]>("http://localhost:8080/post_specific_statistics",{"path":path, "data":number_quiz}).subscribe(data => {
+        
+      })
+    })
+
+    // number_correct_qcm 
+    path = this.Username + "/quiz/number_correct_qcm";
+    this.http.post<any[]>("http://localhost:8080/get_specific_statistics",{"path":path}).subscribe(data => {
+      var number_correct_qcm = data["number_correct_qcm"];
+      number_correct_qcm = number_correct_qcm + this.score; 
+      this.http.post<any[]>("http://localhost:8080/post_specific_statistics",{"path":path, "data":number_correct_qcm}).subscribe(data => {
+        
+      })
+    })
+
+    
+    // nombre de QCM totale done
+    path = this.Username + "/quiz/number_qcm_done";
+    this.http.post<any[]>("http://localhost:8080/get_specific_statistics",{"path":path}).subscribe(data => {
+      var number_qcm_done = data["number_correct_quiz"];
+      number_qcm_done = number_qcm_done + this.QList.length; 
+      this.http.post<any[]>("http://localhost:8080/post_specific_statistics",{"path":path, "data":number_qcm_done}).subscribe(data => {
+        
+      })
+    })
+
+    
+    // nombre de QCM totale done by faculte 
+    //nmbre_qcm_faculte[facult]+nmbre de qcm faits == /{username}/faculte/nmbre_qcm
+    path = this.Username + "/quiz/number_qcm_done_faculte";
+    this.http.post<any[]>("http://localhost:8080/get_specific_statistics",{"path":path}).subscribe(data => {
+      var number_qcm_done_faculte = data[this.data["school"]];
+      number_qcm_done_faculte = number_qcm_done_faculte + this.QList.length; 
+      this.http.post<any[]>("http://localhost:8080/post_specific_statistics",{"path":path, "data":number_qcm_done_faculte}).subscribe(data => {
+        
+      })
+    })
+
+    // nombre de QCM totale done by year 
+    //nmbre_qcm_annee[annee]+nmbre de qcm faits  == /{username}/annee /nmbre_qcm
+    path = this.Username + "/quiz/number_qcm_done_year";
+    this.http.post<any[]>("http://localhost:8080/get_specific_statistics",{"path":path}).subscribe(data => {
+      var number_qcm_done_year = data[this.data["year"]];
+      number_qcm_done_year = number_qcm_done_year + this.QList.length; 
+      this.http.post<any[]>("http://localhost:8080/post_specific_statistics",{"path":path, "data":number_qcm_done_year}).subscribe(data => {
+        
+      })
+    })
     
   }
 

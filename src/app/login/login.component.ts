@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -8,12 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor( private authService: AuthService, public router: Router) { }
 
   ngOnInit() {}
 
-  loginGoogle(){
-    alert("login");
+  
+  loginFacebook(){
+    //this.authService.loginWithFacebook();
+    this.authService.loginWithFacebook2().then(res =>{
+      this.router.navigate([''])
+    }).catch(err=>{
+      alert(err)
+    })
   }
+
+
 
 }
