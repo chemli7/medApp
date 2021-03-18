@@ -1,8 +1,7 @@
 export interface User{
+    id:String ,
+    name: String ,
+    email: String ,
+    picture: { data: { url: String  } } 
 
-    uid: string;
-    displayName: string;
-    email: string;
-    img: string;
-
-}
+};  

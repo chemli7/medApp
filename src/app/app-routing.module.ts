@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CategoriesComponent } from './categories/categories.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { OtherComponent } from './other/other.component';
@@ -8,6 +9,12 @@ import { QuizComponent } from './quiz/quiz.component';
 import { StatsComponent } from './stats/stats.component';
 
 const routes: Routes = [
+
+
+  {
+    path: 'categories',
+    component: CategoriesComponent
+  },
 
   {
     path: 'login',

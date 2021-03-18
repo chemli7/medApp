@@ -20,9 +20,15 @@ import 'firebase/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { StatsComponent } from './stats/stats.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent,LoginComponent, HomeComponent, ProfileComponent,QuizComponent, StatsComponent, CategoriesComponent],
   entryComponents: [],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -67,14 +67,7 @@ export class AuthService {
       });
   }
 
-  private updateUserData(){
-    this.firestore.collection("users").doc(this.user.email).set({
-      uid: this.user.uid,
-      displayName: this.user.displayName,
-      email: this.user.email
-    },{merge: true});
 
-  }
 
   getData(access_token: string){
     let url = 'https://graph.facebook.com/me?fields=id,name,first_name,last_name,email&access_token='+ access_token;
@@ -98,4 +91,16 @@ export class AuthService {
       })
       .catch(e => console.log('Error logging into Facebook', e));
   }
+
+  // ------------ NEW ------------- 
+
+  getUser(){
+    this.user= JSON.parse(localStorage.getItem("user"));
+    return this.user;
+  }
+
+  userSignedIn(): boolean{
+    return JSON.parse(localStorage.getItem("user")) != null;
+  }
+  
 }
