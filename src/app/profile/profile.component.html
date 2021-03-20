@@ -1,15 +1,32 @@
+<ion-app>
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content center text-center>
-  <ion-grid>
-        <ion-row center>
-              <ion-col center>
-                <div  class="text-center">
-                  <card-header>
-                    <h1 >
-                      Username + details
-                    </h1>
-                  </card-header>
-                  </div>
-              </ion-col>
-        </ion-row>
-  </ion-grid>
+<ion-content fullscreen="true" slot="fixed" >
+
+  <div class="card">
+    <div class="header">
+      <div class="avatar">
+        <img src='/../assets/avatar.png' alt="">
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="user-meta ion-text-center">
+      <h3 class="playername">Name Surname</h3>
+      <h5 class="country">Tunisia</h5>
+      <h6 class="ranking">Current ranking: <ion-chip>
+        <ion-label>2</ion-label>
+        </ion-chip>
+      </h6>
+    </div>
+    <ion-button expand="full" color="primary">http://rogerfederer.com</ion-button>
+    <ion-button expand="full" color="secondary">@RogerFederer on Twitter</ion-button>
+    <ion-button expand="full" color="secondary">View profile at ATP</ion-button>
+  </div>
+</ion-content>
+
+</ion-app>
