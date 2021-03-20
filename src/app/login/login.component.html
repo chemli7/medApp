@@ -6,27 +6,14 @@
 	</ion-toolbar>
   </ion-header>
   
-  <div>
-	  {{data}}
-  </div>
+
   <ion-content>
 	<div class="ion-padding" *ngIf="isLoggedIn">
-	  <ion-card>
-		<ion-card-header>
-		  <ion-card-subtitle>Hi, {{users.name}}</ion-card-subtitle>
-		  <ion-card-title>{{users.email}}</ion-card-title>
-		</ion-card-header>
-		<img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />
-		<ion-card-content>
-		  <p>
-			<ion-button expand="full" color="secondary" (click)="logout()">
-			  Logout
-			  <ion-icon name="log-out"></ion-icon>
-			</ion-button>
-		  </p>
-		</ion-card-content>
-	  </ion-card>
-	</div>
+		<ion-button expand="full" color="primary" (click)="logout()">
+		  Log out
+		  <ion-icon name="logo-facebook"></ion-icon>
+		</ion-button>
+	  </div>
 	<div class="ion-padding" *ngIf="!isLoggedIn">
 	  <ion-button expand="full" color="primary" (click)="fbLogin()">
 		Login with

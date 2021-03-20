@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   user: User = { id: '', name: 'Hey', email: '', picture: { data: { url: '' } } };;
 
+  userSignedIn: boolean;
   constructor( private authService: AuthService ) {
     if( this.authService.userSignedIn()){
       this.user = this.authService.getUser();
@@ -25,6 +26,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.userSignedIn = this.authService.userSignedIn();
+    this.user= JSON.parse(localStorage.getItem("user"));
     
   }
 

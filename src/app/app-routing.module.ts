@@ -7,6 +7,7 @@ import { OtherComponent } from './other/other.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { StatsComponent } from './stats/stats.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
 
@@ -15,6 +16,12 @@ const routes: Routes = [
     path: 'categories',
     component: CategoriesComponent
   },
+
+  {
+    path: 'welcome',
+    component: WelcomeComponent
+  },
+
 
   {
     path: 'login',

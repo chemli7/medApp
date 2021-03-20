@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     
 
     this.data = "HEY";
-    fb.getLoginStatus()
+    /*fb.getLoginStatus()
     .then(res => {
       console.log(res.status);
       if (res.status == 'connect') {
@@ -37,10 +37,12 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = false;
       }
     })
-    .catch(e => console.log(e));
+    .catch(e => console.log(e)); */
    }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isLoggedIn = this.authService.userSignedIn()
+  }
   
 
   fbLogin() {
@@ -53,7 +55,7 @@ export class LoginComponent implements OnInit {
         if (res.status == 'connected') {
           this.isLoggedIn = true;
           this.getAndUpdateUserDetail(res.authResponse.userID);
-          //this.router.navigate([""]);
+          this.router.navigate([""]);
         } else {
           this.isLoggedIn = false;
         }
@@ -90,7 +92,7 @@ export class LoginComponent implements OnInit {
       .catch(e => console.log('Error logout from Facebook', e));
     localStorage.removeItem("user");
     this.users=null;
-    //this.router.navigate(["login"]);
+    this.router.navigate(["login"]);
   }
   
   /*loginFacebook(){

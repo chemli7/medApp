@@ -10,22 +10,22 @@
   <div class="card">
     <div class="header">
       <div class="avatar">
-        <img src='/../assets/avatar.png' alt="">
+        <img src="{{user.picture.data.url}}" alt="">
       </div>
     </div>
   </div>
   <div class="card-body">
     <div class="user-meta ion-text-center">
-      <h3 class="playername">Name Surname</h3>
+      <h3 class="playername">{{user.name}} - {{user.email}}</h3>
       <h5 class="country">Tunisia</h5>
       <h6 class="ranking">Current ranking: <ion-chip>
         <ion-label>2</ion-label>
         </ion-chip>
       </h6>
     </div>
-    <ion-button expand="full" color="primary">http://rogerfederer.com</ion-button>
-    <ion-button expand="full" color="secondary">@RogerFederer on Twitter</ion-button>
-    <ion-button expand="full" color="secondary">View profile at ATP</ion-button>
+    <ion-button expand="full" color="primary">something</ion-button>
+    <ion-button expand="full" color="secondary">something</ion-button>
+    <ion-button expand="full" color="secondary">something</ion-button>
   </div>
 </ion-content>
 

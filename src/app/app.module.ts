@@ -26,9 +26,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { StatsComponent } from './stats/stats.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent,LoginComponent, HomeComponent, ProfileComponent,QuizComponent, StatsComponent, CategoriesComponent],
+  declarations: [AppComponent, HeaderComponent,LoginComponent, HomeComponent, ProfileComponent,QuizComponent, StatsComponent, CategoriesComponent, WelcomeComponent],
   entryComponents: [],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

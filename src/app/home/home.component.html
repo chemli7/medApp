@@ -11,7 +11,11 @@
         </ion-row>
 
 
-        <div>
+        <div *ngIf="userSignedIn">
               User logged in: {{user.name}}
         </div>
+
+        <div *ngIf="!userSignedIn">
+            please log in 
+      </div>
   </ion-grid>
